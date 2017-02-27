@@ -1,22 +1,35 @@
 import React, { PropTypes, Component } from 'react';
-import './Header.css';
-
+import CreateContactModal from './CreateContactModal.js';
 import { Button, FormControl, Col, Row, Grid } from 'react-bootstrap';
+
+import './Header.css';
 
 class Header extends Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      showModal: false
+    }
+    
     this.handleSearch = this.handleSearch.bind(this);
-    this.handleNewContact = this.handleNewContact.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   handleSearch(term) {
     this.props.onSearch(term);
   }
 
-  handleNewContact(){
-    this.props.onNewContact();
+  openModal() {
+    this.setState({
+      showModal: true
+    })
+  }
+
+  closeModal() {
+    this.setState({
+      showModal: false
+    })
   }
 
   render() {
@@ -25,13 +38,14 @@ class Header extends Component {
         <Grid>
         <Row>
           <Col xs={2} sm={1}>
-            <AddButton onClick={ this.handleNewContact } />
+            <AddButton onClick={ this.openModal }/>
           </Col>
-          <Col xs={12} md={5} mdPush={5}>
+          <Col xs={8} sm={6} md={4}>
             <SearchBar onSubmit={ this.handleSearch } />
           </Col>
         </Row>
         </Grid>
+        <CreateContactModal closeModal={ this.closeModal } showModal={ this.state.showModal } />
       </div>
     );
   }
@@ -81,10 +95,9 @@ class SearchBar extends Component {
     render() {
       return(
         <div className="flex">
-          <FormControl type="text" placeholder="search" onChange={ this.handleChange } value={ this.state.value } onSubmit={this.handleSubmit} />
-          <SearchButton onClick={ this.handleSubmit }/>
+          <FormControl className="noBorder noBorderRad" type="text" placeholder="search" onChange={ this.handleChange } value={ this.state.value } onSubmit={this.handleSubmit} />
+          <SearchButton className="noBorder noBorderRad" onClick={ this.handleSubmit }/>
         </div>
       )
     }
   }
-

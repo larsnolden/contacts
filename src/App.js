@@ -31,7 +31,9 @@ class App extends Component {
     return (
       <div className="App">
         <Header onSearch={ this.handleSearch } onNewContact={ this.handleNewContact } />
-        { this.state.contacts.map( (contact) => { return <Col xs={12} sm={6} md={4} lg={3}><Card key={contact.key} contact={contact} /></Col>}) }
+        <div className="contacts">
+          { this.state.contacts.map( (contact) => { return <Card key={contact.key} contact={contact} />}) }
+        </div>
       </div>
     );
   }

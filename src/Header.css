@@ -8,6 +8,15 @@
   align-items: center;
 }
 
+.noBorderRad {
+  border-radius: 0 !important;
+  background: blue;
+}
+
+.noBorder {
+  border: none !important;
+}
+
 .flex {
   display: flex;
 }

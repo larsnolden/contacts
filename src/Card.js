@@ -5,6 +5,7 @@
 import React, { Component } from 'react';
 import './Card.css';
 
+
 class Card extends Component {
   constructor(props) {
     super(props);
@@ -14,10 +15,14 @@ class Card extends Component {
     return (
       <div className="card">
         <Avatar path={this.props.contact.avatar} />
-        <h3>{this.props.contact.name}</h3>
-        <div className="info">
-          <p>adress: {this.props.contact.adress}</p>
-        </div>
+        
+        <ul className="info">
+          <li><h3>{this.props.contact.name} {this.props.contact.last}</h3></li>
+          <li>{this.props.contact.phone}</li>
+          <li>{this.props.contact.email}</li>
+          <li>{this.props.contact.street}, {this.props.contact.postal} {this.props.contact.city}, {this.props.contact.state} {this.props.contact.country}</li>
+          <li>"{this.props.contact.notes}"</li>
+        </ul>
       </div>
     );
   }
