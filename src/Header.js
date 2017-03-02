@@ -1,5 +1,4 @@
 import React, { PropTypes, Component } from 'react';
-import CreateContactModal from './CreateContactModal.js';
 import { Button, FormControl, Col, Row, Grid } from 'react-bootstrap';
 
 import './Header.css';
@@ -7,29 +6,18 @@ import './Header.css';
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      showModal: false
-    }
     
     this.handleSearch = this.handleSearch.bind(this);
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    this.handleOpenModal = this.handleOpenModal.bind(this);
   }
 
   handleSearch(term) {
     this.props.onSearch(term);
   }
 
-  openModal() {
-    this.setState({
-      showModal: true
-    })
-  }
-
-  closeModal() {
-    this.setState({
-      showModal: false
-    })
+  handleOpenModal() {
+    console.log(this.props)
+    this.props.openModal();
   }
 
   render() {
@@ -38,14 +26,13 @@ class Header extends Component {
         <Grid>
         <Row>
           <Col xs={2} sm={1}>
-            <AddButton onClick={ this.openModal }/>
+            <AddButton onClick={ this.handleOpenModal }/>
           </Col>
           <Col xs={8} sm={6} md={4}>
             <SearchBar onSubmit={ this.handleSearch } />
           </Col>
         </Row>
         </Grid>
-        <CreateContactModal closeModal={ this.closeModal } showModal={ this.state.showModal } />
       </div>
     );
   }

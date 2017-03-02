@@ -32,15 +32,22 @@ class CreateContactModal extends Component {
   }
 
   handleSubmit(event) {
+    // prevent refresh
     event.preventDefault();
-    createContact(this.state.form);
+
+    //clear input fields
+    this.setState({
+      form: {}
+    })
+    this.props.onSubmit(this.state.form)
   }
   
   //handle input from all the different inputs
   handleChange(event) {
+    // get name from input and create object
     let stateObject = { form: this.state.form }
     stateObject.form[event.target.name] = event.target.value;
-    
+
     this.setState(stateObject);
   }
  
@@ -113,19 +120,3 @@ class CreateContactModal extends Component {
 CreateContactModal.PropTypes = { onClose: React.PropTypes.func, showModal: React.PropTypes.bool }
 
 export default CreateContactModal
-
-
-function createContact (contact) {
- /* for(let entry in contact) {
-    if(!entry) {
-      entry = 'N/A';
-    }
-  }*/
-
-  //let contacts = JSON.parse(contacts)
-  //let contacts = contacts.push(contact);
-  let these = contacts;
-   these[these.length] = {"asda":"asdrr"};
-  console.log(these)
-
-}
