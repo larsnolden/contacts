@@ -128,5 +128,31 @@
     "phone":"354 546 677",
     "notes":"doesnt go well with Edison",
     "avatar":"./avatar-1.jpg"
+  },
+  {
+    "name":"Lars",
+    "last":"Nolden",
+    "street":"68 Merton St",
+    "postal":"A4D 7F5",
+    "city":"Toronto",
+    "state":"Ontartio",
+    "country":"Canada",
+    "email":"lars@larsnolden.com",
+    "phone":"354 546 677",
+    "notes":"likes ice cream",
+    "avatar":"./avatar-1.jpg"
+  },
+   {
+    "name":"Peter",
+    "last":"Lustig",
+    "street":"69 Wohnwagen",
+    "postal":"50374",
+    "city":"Bernhausen",
+    "state":"Baden Wuertemberg",
+    "country":"Germany",
+    "email":"peter@larsnolden.com",
+    "phone":"354 687 677",
+    "notes":"has a dog",
+    "avatar":"./avatar-1.jpg"
   }
 ]

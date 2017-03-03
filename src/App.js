@@ -14,6 +14,7 @@ class App extends Component {
 
     this.state = {
       contacts: contacts,
+      contactsFiltered: contacts,
       showModal: false
     }
 
@@ -25,7 +26,10 @@ class App extends Component {
 
   //when search is executed
   handleSearch(term) {
-    console.log(term);
+    let contactsFiltered = this.state.contacts.filter( (contact) => Object.values(contact).some( (blob) => blob.includes(term)));
+    this.setState({
+      contactsFiltered: contactsFiltered
+    })
   }
 
   //when new contact is submitted
@@ -52,7 +56,7 @@ class App extends Component {
       <div className="App">
         <Header onSearch={ this.handleSearch } openModal={ this.openModal }/>
         <div className="contacts">
-          { this.state.contacts.map( (contact) => { return <Card key={ contact.key } contact={ contact } />}) }
+          { this.state.contactsFiltered.map( (contact) => { return <Card key={ contact.key } contact={ contact } />}) }
         </div>
           <CreateContactModal closeModal={ this.closeModal } showModal={ this.state.showModal } onSubmit={ this.handleNewContact }/>
       </div>
@@ -73,3 +77,11 @@ const Cards = ( {contacts} ) => {
 const addContact = (contact) => {
   contacts.push(contact);
 }
+
+// own some func for objects
+ Object.prototype.some = (toEval) => {
+    let boolArr = Object.map( (item) => {
+      return toEval
+    });
+    return boolArr.includes(true)
+  }

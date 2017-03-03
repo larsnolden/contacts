@@ -13,11 +13,11 @@ class Card extends Component {
         <Avatar path={this.props.contact.avatar} />
         
         <ul className="info">
-          <li><h3>{this.props.contact.name} {this.props.contact.last}</h3></li>
-          <li>{this.props.contact.phone}</li>
-          <li>{this.props.contact.email}</li>
-          <li>{this.props.contact.street}, {this.props.contact.postal} {this.props.contact.city}, {this.props.contact.state} {this.props.contact.country}</li>
-          <li>"{this.props.contact.notes}"</li>
+          <li><h3>{ this.props.contact.name } { this.props.contact.last }</h3></li>
+          <li>{ this.props.contact.phone || "N/A" }</li>
+          <li>{ this.props.contact.email || "N/A" }</li>
+          <li>{ this.props.contact.street || "N/A" }, { this.props.contact.postal || "N/A" } { this.props.contact.city || "N/A" }, { this.props.contact.state || "N/A" } { this.props.contact.country || "N/A" }</li>
+          <li>"{ this.props.contact.notes || "N/A" }"</li>
         </ul>
       </div>
     );
